@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Точка роста — стратегический коучинг для бизнеса | Ольга Жукова</title>
+<style>
+  :root {
+    --bg: #0a0a0a;
+    --surface: #121212;
+    --border: #232323;
+    --text: #f5f5f5;
+    --muted: #a3a3a3;
+    --c1: #ff6ec7;
+    --c2: #7b61ff;
+    --c3: #00d4ff;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: radial-gradient(ellipse at top, #1a1030 0%, var(--bg) 55%, #05050a 100%);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    line-height: 1.6;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  section { padding: 96px 24px; position: relative; }
+  .container { max-width: 1040px; margin: 0 auto; }
+
+  .gradient-text {
+    background: linear-gradient(100deg, var(--c1), var(--c2), var(--c3), var(--c1));
+    background-size: 300% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: shimmer 6s linear infinite;
+  }
+
+  @keyframes shimmer {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 300% 50%; }
+  }
+
+  .eyebrow {
+    display: inline-block;
+    font-size: 0.8rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--c3);
+    margin-bottom: 16px;
+  }
+
+  h1, h2 { font-weight: 800; line-height: 1.1; letter-spacing: -0.02em; }
+  h2 { font-size: clamp(1.8rem, 5vw, 2.6rem); margin-bottom: 20px; }
+
+  /* Hero */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding-top: 80px;
+  }
+
+  .hero h1 {
+    font-size: clamp(2.6rem, 9vw, 5.2rem);
+    margin-bottom: 24px;
+    filter: drop-shadow(0 0 22px rgba(123, 97, 255, 0.45));
+  }
+
+  .hero .lead {
+    max-width: 640px;
+    margin: 0 auto 40px;
+    font-size: clamp(1.05rem, 2.6vw, 1.25rem);
+    color: var(--muted);
+  }
+
+  .cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 18px 44px;
+    border: none;
+    border-radius: 999px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #fff;
+    text-decoration: none;
+    background: linear-gradient(120deg, var(--c2), var(--c1));
+    cursor: pointer;
+    animation: pulse 2.2s ease-in-out infinite;
+    transition: transform 0.25s ease, filter 0.25s ease;
+  }
+
+  .cta:hover { transform: translateY(-3px) scale(1.04); filter: brightness(1.12); }
+  .cta:active { transform: scale(0.97); }
+  .cta svg { width: 20px; height: 20px; fill: currentColor; }
+
+  @keyframes pulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(123, 97, 255, 0.55), 0 10px 30px rgba(123, 97, 255, 0.35); }
+    50% { box-shadow: 0 0 0 16px rgba(123, 97, 255, 0), 0 10px 44px rgba(255, 110, 199, 0.5); }
+  }
+
+  .contact-hint {
+    margin-top: 22px;
+    font-size: 0.95rem;
+    color: var(--muted);
+  }
+
+  .contact-hint a {
+    color: var(--text);
+    text-decoration: none;
+    border-bottom: 1px dashed #555;
+    transition: color 0.2s ease, border-color 0.2s ease;
+  }
+
+  .contact-hint a:hover { color: var(--c3); border-color: var(--c3); }
+
+  /* About */
+  .about p { color: var(--muted); font-size: 1.05rem; margin-bottom: 18px; max-width: 760px; }
+  .about strong { color: var(--text); font-weight: 600; }
+
+  /* Advantages */
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-top: 48px;
+  }
+
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 32px 28px;
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(123, 97, 255, 0.6);
+    box-shadow: 0 16px 40px rgba(123, 97, 255, 0.2);
+  }
+
+  .icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 22px;
+    background: linear-gradient(135deg, rgba(255, 110, 199, 0.18), rgba(123, 97, 255, 0.18));
+    border: 1px solid rgba(123, 97, 255, 0.35);
+  }
+
+  .icon svg {
+    width: 28px;
+    height: 28px;
+    fill: none;
+    stroke: url(#grad);
+    stroke: var(--c2);
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .card h3 { font-size: 1.2rem; margin-bottom: 10px; }
+  .card p { color: var(--muted); font-size: 0.97rem; }
+
+  /* Audience */
+  .audience-box {
+    background: linear-gradient(135deg, rgba(123, 97, 255, 0.12), rgba(0, 212, 255, 0.06));
+    border: 1px solid var(--border);
+    border-radius: 24px;
+    padding: 48px 40px;
+  }
+
+  .audience-box ul {
+    list-style: none;
+    display: grid;
+    gap: 16px;
+    margin: 24px 0 32px;
+  }
+
+  .audience-box li {
+    position: relative;
+    padding-left: 34px;
+    color: var(--text);
+  }
+
+  .audience-box li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 6px;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--c1), var(--c3));
+  }
+
+  .audience-box li::after {
+    content: "";
+    position: absolute;
+    left: 6px;
+    top: 11px;
+    width: 6px;
+    height: 3px;
+    border-left: 2px solid #0a0a0a;
+    border-bottom: 2px solid #0a0a0a;
+    transform: rotate(-45deg);
+  }
+
+  .why-title { font-size: 1.1rem; font-weight: 700; margin-top: 8px; }
+  .why-text { color: var(--muted); margin-top: 8px; }
+
+  /* Final CTA */
+  .final { text-align: center; }
+  .final p { color: var(--muted); max-width: 620px; margin: 0 auto 36px; font-size: 1.05rem; }
+
+  footer {
+    padding: 32px 24px 48px;
+    text-align: center;
+    color: #6b6b6b;
+    font-size: 0.85rem;
+    border-top: 1px solid var(--border);
+  }
+
+  /* Adaptive */
+  @media (max-width: 860px) {
+    .cards { grid-template-columns: 1fr; }
+    .audience-box { padding: 36px 26px; }
+  }
+
+  @media (max-width: 480px) {
+    section { padding: 72px 20px; }
+    .cta { width: 100%; justify-content: center; padding: 18px 24px; }
+    .audience-box { padding: 30px 22px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation: none !important; transition: none !important; }
+  }
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <div class="container">
+    <span class="eyebrow">Программа для владельцев бизнеса</span>
+    <h1 class="gradient-text">Точка роста</h1>
+    <p class="lead">
+      Стратегический коучинг и консалтинг, который помогает владельцу бизнеса выйти из операционного хаоса,
+      выстроить понятный план на год и вырасти без выгорания.
+    </p>
+    <a class="cta" href="https://t.me/ovzykova174" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+      Записаться на диагностику
+    </a>
+    <p class="contact-hint">
+      Вопросы? Пишите в Telegram <a href="https://t.me/ovzykova174" target="_blank" rel="noopener">@ovzykova174</a>
+      или звоните <a href="tel:+79030905005">+7 903 090 5005</a>
+    </p>
+  </div>
+</section>
+
+<section class="about">
+  <div class="container">
+    <span class="eyebrow">О программе</span>
+    <h2>Бизнес растёт, а понимания, куда он движется, всё меньше</h2>
+    <p>
+      Многие владельцы годами работают «в деле»: сами решают задачи клиентов, сотрудников и финансов,
+      а стратегия откладывается на потом. Результат знаком: выручка скачет, команда ждёт указаний,
+      а вы устаёте сильнее, чем хотелось бы.
+    </p>
+    <p>
+      <strong>«Точка роста»</strong> — это структурированная работа с вами один на один и в группе.
+      Мы разбираем цифры и модель бизнеса, ставим цели на 12 месяцев, выбираем приоритеты
+      и превращаем их в конкретные шаги на каждую неделю. Каждый этап заканчивается измеримым результатом.
+    </p>
+    <p>
+      Программа сочетает бизнес-коучинг, который меняет ваше мышление и решения, и стратегический
+      консалтинг, который даёт рабочие инструменты: финансовую модель, карту процессов, систему
+      показателей и план развития команды.
+    </p>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <span class="eyebrow">Преимущества</span>
+    <h2>Почему это работает</h2>
+    <div class="cards">
+      <article class="card">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M3 17l6-6 4 4 8-8"/><path d="M14 7h7v7"/>
+          </svg>
+        </div>
+        <h3>Стратегия на 12 месяцев</h3>
+        <p>Понятная цель, приоритеты и дорожная карта. Вы перестаёте реагировать на всё подряд и начинаете двигаться к конкретному результату.</p>
+      </article>
+      <article class="card">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>
+          </svg>
+        </div>
+        <h3>Больше времени для себя</h3>
+        <p>Делегирование и понятные процессы снимают с вас операционные задачи. Вы занимаетесь развитием, а не тушением пожаров.</p>
+      </article>
+      <article class="card">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 3v18M16 7H10a3 3 0 000 6h4a3 3 0 010 6H7"/>
+          </svg>
+        </div>
+        <h3>Рост выручки и прибыли</h3>
+        <p>Разбираем unit-экономику и точки роста. Решения опираются на цифры, а не на интуицию, поэтому деньги перестают «утекать».</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <span class="eyebrow">Для кого</span>
+    <div class="audience-box">
+      <h2>Для владельцев бизнеса</h2>
+      <p style="color: var(--muted); max-width: 680px;">
+        Программа подходит, если вы управляете компанией от нескольких сотрудников и выше
+        и узнаёте себя в одном или нескольких пунктах:
+      </p>
+      <ul>
+        <li>Выручка растёт, а прибыли и свободного времени не прибавляется</li>
+        <li>Вы принимаете ключевые решения в одиночку и без чёткого плана</li>
+        <li>Команда зависит от вас, и без вашего участия процессы стоят</li>
+        <li>Хочется масштабироваться, но непонятно, с чего начать и что отложить</li>
+      </ul>
+      <p class="why-title">Почему это выгодно</p>
+      <p class="why-text">
+        Одна верно принятая стратегическая ошибка может стоить бизнесу больше, чем вся программа.
+        Здесь вы получаете структуру, инструменты и поддержку эксперта, и каждое решение становится
+        дешевле и быстрее: меньше проб и ошибок, меньше простоев, больше денег в вашем кармане.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="final">
+  <div class="container">
+    <h2 class="gradient-text">Готовы к следующему уровню?</h2>
+    <p>
+      Запишитесь на бесплатную диагностику. За 40 минут разберём ваш бизнес и покажем,
+      где находится точка роста именно для вас.
+    </p>
+    <a class="cta" href="https://t.me/ovzykova174" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+      Записаться на диагностику
+    </a>
+    <p class="contact-hint">
+      Или напишите <a href="https://t.me/ovzykova174" target="_blank" rel="noopener">@ovzykova174</a>
+      · <a href="tel:+79030905005">+7 903 090 5005</a>
+    </p>
+  </div>
+</section>
+
+<footer>
+  Ольга Жукова · Бизнес-коуч и стратегический консалтинг
+</footer>
+
+</body>
+</html>
